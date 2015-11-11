@@ -1,0 +1,28 @@
+\documentclass[12pt,letterpaper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=3cm,right=2.5cm,top=3cm,bottom=2cm]{geometry}
+\author{Fernando Manzanares}
+\title{Diseños de Experimentos en R}
+\renewcommand{\baselinestretch}{1.5}
+\setlength{\parskip}{8mm}
+\usepackage{ragged2e}
+\justifying
+\usepackage{longtable}
+\usepackage{Sweave}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\SweaveInput{Portada2.Rnw}
+
+
+\end{document}
+
+
+
+
+

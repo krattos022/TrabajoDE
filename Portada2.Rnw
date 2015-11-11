@@ -1,0 +1,35 @@
+\begin{titlepage}
+
+\begin{center}
+\vspace*{-1in}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=6cm]{Minerva}
+\end{center}
+\end{figure}
+
+FACULTAD MULTIDISCIPLINARIA DE OCCIDENTE\\
+\vspace*{0.15in}
+DEPARTAMENTO DE MATEMÁTICAS \\
+\vspace*{0.6in}
+\begin{large}
+TITULO:\\
+\end{large}
+\vspace*{0.2in}
+\begin{Large}
+\textbf{DISEÑOS DE EXPERIMENTOS EN R} \\
+\end{Large}
+\vspace*{0.3in}
+\begin{large}
+Fernando Ernesto Manzanares Morán\\
+\end{large}
+\vspace*{0.3in}
+\rule{80mm}{0.1mm}\\
+\vspace*{0.1in}
+\begin{large}
+Docente: \\
+Salvador Enrique Rodriguez Hernandez \\
+\end{large}
+\end{center}
+
+\end{titlepage}
