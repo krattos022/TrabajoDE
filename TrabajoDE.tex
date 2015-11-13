@@ -9,11 +9,18 @@
 \author{Fernando Manzanares}
 \title{Diseños de Experimentos en R}
 \renewcommand{\baselinestretch}{1.5}
-\setlength{\parskip}{8mm}
+\setlength{\parskip}{4mm}
 \usepackage{ragged2e}
 \justifying
 \usepackage{longtable}
 \usepackage{Sweave}
+\setlength\parindent{0pt}
+\usepackage{titlesec} 
+\usepackage{xcolor}
+\titleformat{\chapter}[display]{\bfseries\Huge}{\Huge\thechapter.}{0.5em}{}
+\titlespacing{\chapter}{0pt}{0ex}{1pc}
+\widowpenalty=10000  
+\clubpenalty=10000
 
 \begin{document}
 \input{TrabajoDE-concordance}
@@ -52,6 +59,144 @@ Salvador Enrique Rodriguez Hernandez \\
 \end{center}
 
 \end{titlepage}
+\chapter*{Definición de un diseño experimental y conceptos básicos}
+El \textbf{diseño de un experimento} es la secuencia completa de los pasos que se deben
+tomar de antemano, para planear y asegurar la obtención de toda la información relevante y
+adecuada al problema bajo investigación, la cual será analizada estadísticamente para obtener
+conclusiones válidas y objetivas con respecto a los objetivos planteados.
+
+Un \textbf{diseño experimental} es una prueba o serie de pruebas en las cuales existen
+cambios deliberados en las variables de entrada de un proceso o sistema, de tal manera que
+sea posible observar e identificar las causas de los cambios que se producen en la respuesta de
+salida.
+
+\textbf{Proposito de un diseño experimental}
+
+El propósito de cualquier Diseño Experimental, es proporcionar una cantidad máxima de
+información pertinente al problema que se está investigando. Y ajustar el diseño que sea lo
+mas simple y efectivo; para ahorrar dinero, tiempo, personal y material experimental que se va
+ha utilizar. Es de acotar, que la mayoría de los diseños estadísticos simples, no sólo son fáciles
+de analizar, sino también son eficientes en el sentido económico y en el estadístico.
+De lo anterior, se deduce que el diseño de un experimento es un proceso que explica
+tanto la metodología estadística como el análisis económico.
+
+\textbf{Conceptos básicos}
+
+
+\textbf{Diseño:} Consiste en planificar la forma de hacer el experimento, materiales y métodos a
+usar, etc.
+
+\textbf{Experimento:} Conjunto de pruebas o ensayos cuyo objetivo es obtener 
+información, que permita mejorar el producto o el proceso en estudio.
+
+\textbf{Tratamiento:}
+- Es un conjunto particular de condiciones experimentales definidas por el investigador; son el conjunto de circunstancias creadas por el experimento, en respuesta a la hipótesis de investigación y son el centro de la misma.
+
+\textbf{Factor:} Es un grupo específico de tratamientos. (Ejemplo, Temperatura, humedad, tipos
+de suelos, etc.).
+
+\textbf{Niveles del factor:} Son diversas categorías de un factor. ( Por ejemplo, los niveles
+de temperatura son 20°C, 30°C, etc.). Un factor Cuantitativo tiene niveles
+asociados con puntos ordenados en alguna escala de medición, como
+temperatura; mientras que los niveles de un factor cualitativo representan
+distintas categorías o clasificaciones, como tipo de suelo, que no se puede acomodar
+conforme a alguna magnitud.
+
+\textbf{Réplica:} Son las repeticiones que se realizan del experimento básico.
+
+\textbf{Unidad experimental:}
+
+Es el material experimental unitario que recibe la aplicación de un tratamiento.
+
+Es la entidad física o el sujeto expuesto al tratamiento independientemente de las
+otras unidades. La unidad experimental una vez expuesta al tratamiento constituye
+una sola réplica del tratamiento.
+
+Es el objeto o espacio al cual se aplica el tratamiento y donde se mide y analiza la
+variable que se investiga.
+
+Es el elemento que se está estudiando.
+
+\textbf{Unidad muestral:} Es una fracción de la unidad experimental que se utiliza 
+para medir el efecto de un tratamiento.
+
+\textbf{Error experimental:} Es una medida de variación que existe entre dos o 
+más unidades experimentales, que han recibido la aplicación de un mismo tratamiento de
+manera idéntica e independiente.
+
+\textbf{Factores controlables:} Son aquellos parámetros o características del 
+producto o proceso, para los cuales se prueban distintas variables o
+valores con el fin de estudiar cómo influyen sobre los resultados.
+
+\textbf{Factores incontrolables:} Son aquellos parámetros o características del 
+producto o proceso, que es imposible de controlar al momento de
+desarrollar el experimento.
+
+\textbf{Variabilidad natural:} es la variación entre las unidades experimentales, 
+que el experimentador no puede controlar ni eliminar.
+
+\textbf{Variable dependiente:} es la variable que se desea examinar o estudiar en 
+un experimento. (Variable Respuesta).
+
+\textbf{Hipótesis:}
+
+Es una suposición o conjetura que se plantea el investigador de una realidad
+desconocida.
+
+Es el supuesto que se hace sobre el valor de un parámetro (constante que caracteriza
+a una población) el cual puede ser validado mediante una prueba estadística.
+
+\newpage
+\chapter*{Diseños unifactoriales}
+En el análisis de los resultados de los experimentos se pueden observar diferentes
+aplicaciones de los Diseños Experimentales. Hay experimentos muy útiles en los cuales existe
+un sólo factor de interés; el cual se analiza por medio de la comparación de dos condiciones
+que intervienen en el Experimento (a menudo llamadas tratamientos o niveles del factor); a
+este tipo de experimentos se le denomina Experimentos de Comparación Simple,
+estudiados en los cursos de Estadística básica. El análisis de los datos de este tipo de
+Experimentos resulta ser sencillo, ya que se utilizan técnicas de la Inferencia Estadística,
+llamada Prueba de Hipótesis (o pruebas de significancia) que son las que ayudan al
+experimentador a comparar estas condiciones.
+
+Si en el tipo de Diseño Experimental planteado anteriormente se requiere más de dos
+niveles del factor que se analiza, éstos son considerados como "Diseños Unifactoriales".
+Teniendo en cuenta que para el análisis de éstos se utiliza el Análisis de Varianza, ya que se
+requiere probar la igualdad de varias medias.
+
+En los experimentos de los Diseños Unifactoriales, el número de observaciones
+recolectadas en cada tratamiento pueden ser iguales o diferentes. Cuando el número de
+observaciones sea diferente se dice que el Diseño está Desequilibrado o Desbalanceado; en
+caso contrario el Diseño está Equilibrado o Balanceado.
+
+En este documento se hará uso del caso en el que el Diseño está Equilibrado o Balanceado y se utilizará un modelo de efectos fijos (en este tipo
+de Modelos se desea probar hipótesis en relación a las medias de los tratamientos y las
+conclusiones sólo se aplicarán a los niveles del factor considerados en el análisis, las
+conclusiones no pueden extenderse a tratamientos similares que no se consideraron.) y no se profundizara mas teóricamente ya que el fin de este documento es la aplicación de código del software estadistico R para la aplicación de dicho modelo.
+
+\textbf{Ejemplo 1.}
+
+El Ministerio de Educación esta interesado en implementar tres programas de estudio; con el
+objetivo de medir la habilidad de lectura en los alumnos. Para ello, se eligen alumnos del sexto
+grado de un Colegio de San Salvador, de los cuales fueron asignados al azar 27 alumnos, a
+cada uno de los tres grupos. Se utilizó un programa diferente en cada grupo, se llevó a cabo un
+examen al inicio y al final de la implementación de los programas, los valores obtenidos
+representan la diferencia que hay entre la nota del examen que se hizo al inicio y al final de la
+implementación del programa, obteniéndose los siguientes datos, en base 100:
+
+\begin{Schunk}
+\begin{Sinput}
+> datos<-read.csv("Ej1HL.csv", header = TRUE, sep = ";")
+> unifact<- aov(HL~Programa, data = datos)
+> summary(unifact)
+\end{Sinput}
+\begin{Soutput}
+            Df Sum Sq Mean Sq F value Pr(>F)
+Programa     2  36.22   18.11    1.44  0.257
+Residuals   24 301.78   12.57               
+\end{Soutput}
+\end{Schunk}
+
+
 
 
 \end{document}

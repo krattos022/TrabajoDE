@@ -1,0 +1,44 @@
+\newpage
+\chapter*{Diseños unifactoriales}
+En el análisis de los resultados de los experimentos se pueden observar diferentes
+aplicaciones de los Diseños Experimentales. Hay experimentos muy útiles en los cuales existe
+un sólo factor de interés; el cual se analiza por medio de la comparación de dos condiciones
+que intervienen en el Experimento (a menudo llamadas tratamientos o niveles del factor); a
+este tipo de experimentos se le denomina Experimentos de Comparación Simple,
+estudiados en los cursos de Estadística básica. El análisis de los datos de este tipo de
+Experimentos resulta ser sencillo, ya que se utilizan técnicas de la Inferencia Estadística,
+llamada Prueba de Hipótesis (o pruebas de significancia) que son las que ayudan al
+experimentador a comparar estas condiciones.
+
+Si en el tipo de Diseño Experimental planteado anteriormente se requiere más de dos
+niveles del factor que se analiza, éstos son considerados como "Diseños Unifactoriales".
+Teniendo en cuenta que para el análisis de éstos se utiliza el Análisis de Varianza, ya que se
+requiere probar la igualdad de varias medias.
+
+En los experimentos de los Diseños Unifactoriales, el número de observaciones
+recolectadas en cada tratamiento pueden ser iguales o diferentes. Cuando el número de
+observaciones sea diferente se dice que el Diseño está Desequilibrado o Desbalanceado; en
+caso contrario el Diseño está Equilibrado o Balanceado.
+
+En este documento se hará uso del caso en el que el Diseño está Equilibrado o Balanceado y se utilizará un modelo de efectos fijos (en este tipo
+de Modelos se desea probar hipótesis en relación a las medias de los tratamientos y las
+conclusiones sólo se aplicarán a los niveles del factor considerados en el análisis, las
+conclusiones no pueden extenderse a tratamientos similares que no se consideraron.) y no se profundizara mas teóricamente ya que el fin de este documento es la aplicación de código del software estadistico R para la aplicación de dicho modelo.
+
+\textbf{Ejemplo 1.}
+
+El Ministerio de Educación esta interesado en implementar tres programas de estudio; con el
+objetivo de medir la habilidad de lectura en los alumnos. Para ello, se eligen alumnos del sexto
+grado de un Colegio de San Salvador, de los cuales fueron asignados al azar 27 alumnos, a
+cada uno de los tres grupos. Se utilizó un programa diferente en cada grupo, se llevó a cabo un
+examen al inicio y al final de la implementación de los programas, los valores obtenidos
+representan la diferencia que hay entre la nota del examen que se hizo al inicio y al final de la
+implementación del programa, obteniéndose los siguientes datos, en base 100:
+
+<<>>=
+datos<-read.csv("Ej1HL.csv", header = TRUE, sep = ";")
+unifact<- aov(HL~Programa, data = datos)
+summary(unifact)
+@
+
+

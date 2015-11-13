@@ -9,15 +9,24 @@
 \author{Fernando Manzanares}
 \title{Diseños de Experimentos en R}
 \renewcommand{\baselinestretch}{1.5}
-\setlength{\parskip}{8mm}
+\setlength{\parskip}{4mm}
 \usepackage{ragged2e}
 \justifying
 \usepackage{longtable}
 \usepackage{Sweave}
+\setlength\parindent{0pt}
+\usepackage{titlesec} 
+\usepackage{xcolor}
+\titleformat{\chapter}[display]{\bfseries\Huge}{\Huge\thechapter.}{0.5em}{}
+\titlespacing{\chapter}{0pt}{0ex}{1pc}
+\widowpenalty=10000  
+\clubpenalty=10000
 
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 \SweaveInput{Portada2.Rnw}
+\SweaveInput{Conceptos.Rnw}
+\SweaveInput{D_unifact.Rnw}
 
 
 \end{document}
