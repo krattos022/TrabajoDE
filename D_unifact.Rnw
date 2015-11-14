@@ -34,11 +34,102 @@ cada uno de los tres grupos. Se utilizó un programa diferente en cada grupo, se
 examen al inicio y al final de la implementación de los programas, los valores obtenidos
 representan la diferencia que hay entre la nota del examen que se hizo al inicio y al final de la
 implementación del programa, obteniéndose los siguientes datos, en base 100:
+\begin{table}[htb]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+Tratamiento  & \multicolumn{9}{c|}{Datos} \\
+\hline
+Programa 1 &20&18&18&23&22&17&15&13&21 \\
+\hline
+Programa 2 &15&20&13&12&16&17&21&15&13 \\
+\hline
+Programa 3 &12&15&18&20&18&17&10&24&16 \\
+\hline
+
+\end{tabular}
+\caption{Diferencias entre nota de inicio y nota final}
+\end{table}
+
+\textbf{Solución.}
+Antes de realizar los cálculos matemáticos, se definirá la variable de estudio y las hipótesis
+que se desean probar.
+
+\textbf{Variable de estudio:} Habilidad de Lectura.
+
+\textbf{Hipótesis:}
+
+$H_{0}$ : $\mu_1 = \mu_2 = \mu_3$ (No existe diferencia entre los grupos)
+
+$H_{1}$ : $\mu_1 \not= \mu_2 \not= \mu_3$ (Existe diferencia entre los grupos)
+
+\textbf{El significado verbal de las hipótesis es:}
+
+\textbf{$H_{0}$} : Con la implementación de los tres programas de estudio, no existe diferencia
+significativa en la habilidad de lectura entre los grupos de alumnos del sexto grado.
+
+\textbf{$H_{1}$} : Con la implementación de los tres programas de estudio, existe diferencia significativa en la habilidad de lectura entre los grupos de alumnos del sexto grado.
 
 <<>>=
+library(xtable)
+#Leemos la hoja de datos
 datos<-read.csv("Ej1HL.csv", header = TRUE, sep = ";")
+#Analysis of Variance(aov) para un factor
 unifact<- aov(HL~Programa, data = datos)
-summary(unifact)
+Resultado<-summary(unifact)
+#su equivalente
+Resultado2<- anova(unifact)
+#genarando el codigo latex para la tabla
+# de ANOVA
+Resultado3<- xtable(Resultado2) 
 @
 
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrrr}
+  \hline
+ & Df & Sum Sq & Mean Sq & F value & Pr($>$F) \\ 
+  \hline
+Programa    & 2 & 36.22 & 18.11 & 1.44 & 0.2566 \\ 
+  Residuals   & 24 & 301.78 & 12.57 &  &  \\ 
+   \hline
+\end{tabular}
+\caption{Anova de un factor}
+\end{table}
+
+\textbf{Conclusión}
+
+Si se observa la columna Pr(>F) ésta muestra el P-valor generado por el ANOVA y se interpreta de la siguiente manera, como el nivel de significancia de la prueba F con 2 grados de libertad en el numerador y 24 en el denominador es de del 5 por ciento y el P-valor es mayor a este puede concluirse que con la implementación de los tres programas de estudio, existe diferencia
+significativa en la habilidad de lectura entre los grupos de alumnos del sexto grado.
+\newpage
+Si al efectuar el Análisis de Varianza para un Modelo de Efectos Fijos, la hipótesis nula es
+rechazada. Se llega a la conclusión que existe diferencia entre las medias o que hay diferencia
+entre los tratamientos. En muchas situaciones en la industria, este resultado es de poco
+interés; ya que no se especifica exactamente cuales tratamientos son diferentes y el
+experimentador espera hallar diferencias, y está más interesado en investigar que tratamientos
+difieren entre si, o dicho de otra manera, en investigar contrastes entre los tratamientos.
+
+Cuando se da esta situación puede ser útil realizar comparaciones adicionales entre grupos
+de medias de los tratamientos. Las comparaciones entre medias de tratamientos se realizan en
+términos de los totales de tratamientos $y_{i.}$ o de los promedios de tratamientos $\bar{y_{i.}}$. Los procedimientos para efectuar esta comparación se conocen como Métodos de Comparación
+Múltiple o Pruebas a Posteriori.
+
+\textbf{Estimacion de las medias de los tratamientos:}
+<<>>=
+library(ggplot2)
+library(gplots)
+boxplot(datos$HL~datos$Programa,
+        ylab = "Habilidad de lectura",
+        xlab = "Tratamientos",
+        col=rainbow(5, alpha = .3))
+plotmeans(datos$HL~datos$Programa,
+          ylab = "Habilidad de lectura",
+          xlab = "Tratamientos")
+@
+\textbf{Evaluacion de las diferencias entre los tratamientos:}
+
+Prueba de Tukey: 
+<<>>=
+Prueba<-TukeyHSD(unifact)
+@
 

@@ -21,6 +21,7 @@
 \titlespacing{\chapter}{0pt}{0ex}{1pc}
 \widowpenalty=10000  
 \clubpenalty=10000
+\usepackage{multirow}
 
 \begin{document}
 \SweaveOpts{concordance=TRUE}

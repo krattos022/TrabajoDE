@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.9)  12 NOV 2015 23:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.9)  13 NOV 2015 21:04
 entering extended mode
 **TrabajoDE.tex
 (C:\Users\Fernando\Documents\TrabajoDE\TrabajoDE.tex
@@ -663,37 +663,40 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+\bigstrutjot=\dimen129
+)
 (C:\Users\Fernando\Documents\TrabajoDE\TrabajoDE.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 26.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    ... okay on input line 26.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count115
-\scratchdimen=\dimen129
+\scratchdimen=\dimen130
 \scratchbox=\box34
 \nofMPsegments=\count116
 \nofMParguments=\count117
 \everyMPshowfont=\toks26
 \MPscratchCnt=\count118
-\MPscratchDim=\dimen130
+\MPscratchDim=\dimen131
 \MPnumerator=\count119
 \makeMPintoPDFobject=\count120
 \everyMPtoPDFconversion=\toks27
@@ -733,13 +736,13 @@ LaTeX Font Info:    ... okay on input line 25.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 25.
+LaTeX Info: Redefining \selectfont on input line 26.
 
 (C:\Users\Fernando\Documents\TrabajoDE\TrabajoDE-concordance.tex)
 <Minerva.png, id=6, 286.1892pt x 367.6134pt>
 File: Minerva.png Graphic file (type png)
  <use Minerva.png>
-Package pdftex.def Info: Minerva.png used on input line 33.
+Package pdftex.def Info: Minerva.png used on input line 34.
 (pdftex.def)             Requested size: 170.71652pt x 219.28519pt.
  [1
 
@@ -747,39 +750,53 @@ Package pdftex.def Info: Minerva.png used on input line 33.
 ts/TrabajoDE/Minerva.png>] [1
 
 ]
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 99.
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 100.
+
  (C:/PROGRA~1/R/R-32~1.2/share/texmf/tex/latex\ts1aer.fd
 File: ts1aer.fd 
 )
 LaTeX Font Info:    Font shape `TS1/aer/m/n' in size <12> not available
-(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 99.
+(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 100.
 
 [2] [3] [4
 
 ]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 187.
+LaTeX Font Info:    Try loading font information for U+msa on input line 188.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 188.
 
- ("C:\Program Files\MiKTeX 2.9\tex\latex\ae\t1aett.fd"
-File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [5]
+LaTeX Font Info:    Try loading font information for T1+aett on input line 223.
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\ae\t1aett.fd"
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+) [6] [7]
 (C:\Users\Fernando\Documents\TrabajoDE\TrabajoDE.aux) ) 
 Here is how much of TeX's memory you used:
- 5496 strings out of 493921
- 70247 string characters out of 3147273
- 136880 words of memory out of 3000000
- 8671 multiletter control sequences out of 15000+200000
- 23146 words of font info for 52 fonts, out of 3000000 for 9000
+ 5552 strings out of 493921
+ 71162 string characters out of 3147273
+ 139060 words of memory out of 3000000
+ 8706 multiletter control sequences out of 15000+200000
+ 26709 words of font info for 66 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 35i,6n,35p,283b,345s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 35i,10n,35p,413b,345s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Fernando\AppD
 ata\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk><C:/Program
  Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmsltt10.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on TrabajoDE.pdf (6 pages, 345437 bytes).
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmsltt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+msy10.pfb>
+Output written on TrabajoDE.pdf (8 pages, 379876 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
+ 70 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
