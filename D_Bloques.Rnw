@@ -32,10 +32,168 @@ clasifican en:
   \item Diseños Aleatorizados por Bloques Completos.
   \item Diseños Aleatorizados por Bloques Incompletos Balanceados.
 \end{enumerate}
-En este documento se hara referencia unicamente a los Diseños Aleatorizados por Bloques Completos.
-
+En este documento se hara referencia unicamente a los Diseños Aleatorizados por Bloques Completos este Diseño se da cuando cada bloque tiene tantas unidades Experimentales como
+Tratamientos, y todos los tratamientos son asignados al azar dentro de cada bloque.
+En este tipo de Diseño la palabra ”Completo” significa que todos los tratamientos son
+probados en cada bloque, y los bloques forman una unidad experimental más homogénea con
+la cual se comparan los tratamientos, y ”Aleatorizado” porque dentro de cada bloque los
+tratamientos son asignados de forma aleatoria a las unidades Experimentales; es decir, que
+todas las Unidades Experimentales de un mismo bloque tienen la misma probabilidad de recibir
+cualquiera de los tratamientos. Esta estrategia de Diseño mejora efectivamente la precisión en
+las comparaciones al eliminar la variabilidad en los tratamientos.
+\newpage
 \textbf{Ejemplo 1.}
-<<>>=
 
+Se probaran 5 raciones respecto a sus diferencias en el engorde de novillos. Se dispone de 20
+novillos para el experimento, que se distribuyen en 4 bloques (5 novillos por bloque) con base
+a sus pesos, al iniciar la prueba de engorde. Los 5 tratamientos (raciones) se asignaron al azar
+dentro de cada bloque. Los novillos más pesados se agruparon en un bloque, en otro se
+agruparon los 5 siguientes más pesados y así sucesivamente. Se obtuvieron los siguientes
+datos:
+
+
+
+<<>>=
+library(xtable)
+#Leemos la hoja de datos
+datos<-read.csv("Ej1_B.csv", header = TRUE, sep = ";")
+#Analysis of Variance(aov) para un factor
+DBloques<- aov(datos$Observaciones ~ datos$Raciones + datos$Bloques)
+Resultado<-summary(DBloques)
+#su equivalente
+Resultado2<- anova(DBloques)
+#genarando el codigo latex para la tabla
+# de ANOVA
+Resultado3<- xtable(Resultado2) 
 @
 
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrrr}
+  \hline
+ & Df & Sum Sq & Mean Sq & F value & Pr($>$F) \\ 
+  \hline
+Raciones & 4 & 30.71 & 7.68 & 39.11 & 0.0000 \\ 
+Bloques(novillos) & 3 & 0.46 & 0.15 & 0.78 & 0.5257 \\ 
+  Residuals & 12 & 2.36 & 0.20 &  &  \\ 
+   \hline
+\end{tabular}
+\caption{Análisis de Varianza}
+\end{table}
+
+\textbf{Conclusión}
+
+Las cinco raciones no son igualmente efectivas en el engorde de novillos o la cantidad de
+ración influye significativamente en el engorde de los novillos, otro punto importante que puede observarse es que los bloques (novillos) no son significativos, es decir no hay un efecto significativo de los bloques hacia el factor, o dicho de otra manera separar a los novillos en bloques no reduce significativamente la variabilidad, en palabras sencillas, dado que los bloques no son significativos, da igual utilizar un diseño unifactorial.
+
+Como la hipotesis nula fue rechazada es necesario determinar
+que medias son significativamente diferentes; para observar esas diferencias entre las medias
+se utilizará la prueba LSD y tukey.
+
+\textbf{Estimacion de las medias de los tratamientos:}
+<<>>=
+library(ggplot2)
+library(gplots)
+boxplot(datos$Observaciones~datos$Raciones,
+        ylab = "Pesos",
+        xlab = "Raciones",
+        col=rainbow(5, alpha = .3))
+plotmeans(datos$Observaciones~datos$Raciones,
+          ylab = "Pesos",
+          xlab = "Raciones")
+@
+\newpage
+Prueba LSD:
+<<>>=
+library(agricolae)
+data.Prueba1<- LSD.test(DBloques, "datos$Raciones")
+data.Prueba1.result1<- data.frame(data.Prueba1$statistics)
+data.Prueba1.result2<- data.frame(data.Prueba1$means)
+data.Prueba1.result3<- data.frame(data.Prueba1$groups)
+tabla1 <- xtable(data.Prueba1.result1)
+tabla2 <- xtable(data.Prueba1.result2)
+tabla3 <- xtable(data.Prueba1.result3)
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Mean & CV & MSerror & LSD \\ 
+  \hline
+  & 2.21 & 20.10 & 0.20 & 0.68 \\ 
+   \hline
+\end{tabular}
+\caption{Calculo del LSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrr}
+  \hline
+  Raciones  & Means & std & r & LCL & UCL & Min & Max \\ 
+  \hline
+  R1 & 1.50 & 0.58 &   4 & 1.02 & 1.98 & 0.90 & 2.30 \\ 
+  R2 & 3.85 & 0.57 &   4 & 3.37 & 4.33 & 3.20 & 4.50 \\ 
+  R3 & 0.70 & 0.23 &   4 & 0.22 & 1.18 & 0.50 & 0.90 \\ 
+  R4 & 3.50 & 0.20 &   4 & 3.02 & 3.98 & 3.20 & 3.60 \\ 
+  R5 & 1.48 & 0.43 &   4 & 0.99 & 1.96 & 0.90 & 1.80 \\ 
+   \hline
+\end{tabular}
+\caption{Estadisticos}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrl}
+  \hline
+  & trt & means & M \\ 
+  \hline
+  1 & R2 & 3.85 & a \\ 
+  2 & R4 & 3.50 & a \\ 
+  3 & R1 & 1.50 & b \\ 
+  4 & R5 & 1.48 & b \\ 
+  5 & R3 & 0.70 & c \\ 
+   \hline
+\end{tabular}
+\caption{Comparaciones}
+\end{table}
+\newpage
+\textbf{Conclusión}
+
+Puede observarse que las combinaciones 1 y 2, 3 y 4 no difieren significativamente en media y las combinaciones 1 y 3, 1 y 4, 1 y 5, 2 y 3, 2 y 4, 2 y 5, 3 y 5, 4 y 5, difieren significativamente en media, en el contexto las raciones que se le den al novillo si afectan en su peso.  
+
+Prueba de Tukey:
+<<>>=
+data.Prueba<-TukeyHSD(DBloques, ordered = TRUE)
+data.Prueba.result<- data.frame(data.Prueba$`datos$Raciones`)
+Tabla<- xtable(data.Prueba.result)
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrr}
+  \hline
+      & & diff & lwr & upr & p.adj \\ 
+  \hline
+1&R5-R3 & 0.78 & -0.22 & 1.77 & 0.16 \\ 
+2&R1-R3 & 0.80 & -0.20 & 1.80 & 0.14 \\ 
+3&R4-R3 & 2.80 & 1.80 & 3.80 & 0.00 \\ 
+4&R2-R3 & 3.15 & 2.15 & 4.15 & 0.00 \\ 
+5&R1-R5 & 0.02 & -0.97 & 1.02 & 1.00 \\ 
+6&R4-R5 & 2.03 & 1.03 & 3.02 & 0.00 \\ 
+7&R2-R5 & 2.38 & 1.38 & 3.37 & 0.00 \\ 
+8&R4-R1 & 2.00 & 1.00 & 3.00 & 0.00 \\ 
+9&R2-R1 & 2.35 & 1.35 & 3.35 & 0.00 \\ 
+10&R2-R4 & 0.35 & -0.65 & 1.35 & 0.79 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\textbf{Conclusión}
+
+Puede observarse que en las combinaciones 1,2,5,10 no existe diferencia significativa en la media del peso de los novillos.
+
+\newpage
+
+\textbf{Ejemplo 2.}

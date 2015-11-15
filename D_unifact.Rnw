@@ -224,7 +224,7 @@ Nivel       & 3 & 622.25 & 207.42 & 15.41 & 0.0002 \\
 \end{tabular}
 \caption{Anova de un factor}
 \end{table}
-
+\newpage
 \textbf{Conclusión.}
 
 Se concluye que la cantidad de carbón usada en la producción de acero tiene efectos
@@ -277,7 +277,7 @@ tabla3 <- xtable(data.Prueba1.result3)
 \centering
 \begin{tabular}{rrrrrrrr}
   \hline
-      & Means & std & r & LCL & UCL & Min & Max \\ 
+Porcentaje de carbón  & Means & std & r & LCL & UCL & Min & Max \\ 
   \hline
 0.10\% & 27.25 & 2.99 &   4 & 23.25 & 31.25 & 23.00 & 30.00 \\ 
   0.20\% & 33.50 & 4.20 &   4 & 29.50 & 37.50 & 29.00 & 38.00 \\ 
@@ -304,8 +304,7 @@ tabla3 <- xtable(data.Prueba1.result3)
 \end{table}
 
 Las conclusiones principales se toman apartir de el cuadro 8, de manera que si se observa la columna "M" se deben hacer las combinaciones de las letras y éstas diferiran en media significativamente si en las combinaciones las letras no se repiten, es decir, la media en la resistencia a la tensión según en el porcentaje de carbón para los grupos 1 y 2 (30\% y 40\%) no difiere significativamente, sin embargo para las demas combinaciones 1 y 3, 1 y 4, 2 y 3, 2 y 4, 3 y 4, si difieren significativamente en la media de la resistencia, Para reforzar esta conlclusión se realizara la prueba de tukey.
-
-
+\newpage
 Prueba de Tukey: 
 <<>>=
 data.Prueba<-TukeyHSD(Unifact, ordered = TRUE)
@@ -330,4 +329,4 @@ Tabla<- xtable(data.Prueba.result)
 \caption{TukeyHSD}
 \end{table}
 
-Y efectivamente puede observarse que en la columna P.adj la comparación entre los grupos con 40\% y 30\% de carbón no difieren significativamente (igual al LSD) sin embargo en los grupos 20\% y 10\% de carbón  dado que el P.adj es mayor a 0.05 no existe diferencia significativa en las medias de esta comparación y si existe diferencia en las demas combinaciones, en definitiva puede decirse que el la prueba de tukey es mas precisa que el la prueba LSD dado que esta reporto un grupo más que no difieren significativamente en media.
+Y efectivamente puede observarse que en la columna P.adj la comparación entre los grupos con 40\% y 30\% de carbón no difieren significativamente en media (igual al LSD) sin embargo en los grupos 20\% y 10\% y 30\% y 20\% de carbón  dado que el P.adj es mayor a 0.05 no existe diferencia significativa en las medias de estas comparaciones y si existe diferencia en las demas combinaciones, en definitiva puede decirse que el la prueba de tukey es mas precisa que el la prueba LSD dado que esta reporto un grupo más que no difieren significativamente en media.
