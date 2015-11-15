@@ -36,15 +36,17 @@ representan la diferencia que hay entre la nota del examen que se hizo al inicio
 implementación del programa, obteniéndose los siguientes datos, en base 100:
 \begin{table}[htb]
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\begin{tabular}{||c|c|c|c|c|c|c|c|c|c||}
 \hline
-Tratamiento  & \multicolumn{9}{c|}{Datos} \\
+\hline
+Tratamiento  & \multicolumn{9}{c||}{Datos} \\
 \hline
 Programa 1 &20&18&18&23&22&17&15&13&21 \\
 \hline
 Programa 2 &15&20&13&12&16&17&21&15&13 \\
 \hline
 Programa 3 &12&15&18&20&18&17&10&24&16 \\
+\hline
 \hline
 
 \end{tabular}
@@ -99,7 +101,7 @@ Programa    & 2 & 36.22 & 18.11 & 1.44 & 0.2566 \\
 
 \textbf{Conclusión}
 
-Si se observa la columna Pr(>F) ésta muestra el P-valor generado por el ANOVA y se interpreta de la siguiente manera, como el nivel de significancia de la prueba F con 2 grados de libertad en el numerador y 24 en el denominador es de del 5 por ciento y el P-valor es mayor a este puede concluirse que con la implementación de los tres programas de estudio, existe diferencia
+Si se observa la columna Pr(>F) ésta muestra el P-valor generado por el ANOVA y se interpreta de la siguiente manera, como el nivel de significancia de la prueba F con 2 grados de libertad en el numerador y 24 en el denominador es de del 5 por ciento y el P-valor es mayor a este, no hay sufciente evidencia estadistica para rechazar la hipostesis nula y puede concluirse que con la implementación de los tres programas de estudio, no existe diferencia
 significativa en la habilidad de lectura entre los grupos de alumnos del sexto grado.
 \newpage
 Si al efectuar el Análisis de Varianza para un Modelo de Efectos Fijos, la hipótesis nula es
@@ -114,6 +116,8 @@ de medias de los tratamientos. Las comparaciones entre medias de tratamientos se
 términos de los totales de tratamientos $y_{i.}$ o de los promedios de tratamientos $\bar{y_{i.}}$. Los procedimientos para efectuar esta comparación se conocen como Métodos de Comparación
 Múltiple o Pruebas a Posteriori.
 
+Esto quiere decir que si no existe diferencia significativa entre la media de los tratamientos no tiene sentido aplicar pruebas posteriori, sin embargo por efectos de la utilización del código en R, se aplicará la prueba de tukey ("TukeyHSD" en R) cuya hipótesis nula es: "No esxiste difencia significativa entre las comparaciones".
+
 \textbf{Estimacion de las medias de los tratamientos:}
 <<>>=
 library(ggplot2)
@@ -126,10 +130,204 @@ plotmeans(datos$HL~datos$Programa,
           ylab = "Habilidad de lectura",
           xlab = "Tratamientos")
 @
+\newpage
 \textbf{Evaluacion de las diferencias entre los tratamientos:}
 
 Prueba de Tukey: 
 <<>>=
-Prueba<-TukeyHSD(unifact)
+data.Prueba<-TukeyHSD(unifact, ordered = TRUE)
+data.Prueba.result<- data.frame(data.Prueba$Programa)
+Tabla<- xtable(data.Prueba.result)
 @
 
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & diff & lwr & upr & p.adj \\ 
+  \hline
+Programa3-Programa2 & 0.89 & -3.29 & 5.06 & 0.86 \\ 
+  Programa1-Programa2 & 2.78 & -1.40 & 6.95 & 0.24 \\ 
+  Programa1-Programa3 & 1.89 & -2.29 & 6.06 & 0.51 \\ 
+   \hline
+\end{tabular}
+\caption{TukeyHSD}
+\end{table}
+
+Puede observarse que el P-valor en la columna P.adj es superior al 5 porciento por lo que se concluye que no existe diferencia significativa entre las medias que se han comparado, el resultado es obvio dado que en el analisis de varianza se conluyo que no existia diferencia significativa entre las medias de los tratamientos.
+
+\textbf{Ejemplo 2.}
+
+Se supone que la cantidad de carbón usada en la producción de acero tiene un efecto en su
+resistencia a la tensión. En la tabla se muestran los valores de la resistencia a la tensión del
+acero para cada uno de los 4 diferentes porcentajes de carbón. Con estos datos efectúe el
+análisis apropiado e interprete sus resultados.
+
+\textbf{Variable de estudio:} Resistencia a la tensión.
+
+\textbf{Hipótesis:}
+
+$H_{0}$ : $\mu_1 = \mu_2 = \mu_3 = \mu_4$ (No existe diferencia entre los grupos)
+
+$H_{1}$ : $\mu_1 \not= \mu_2 \not= \mu_3 \not= \mu_4$ (Existe diferencia entre los grupos)
+
+\textbf{El significado verbal de las hipótesis es:}
+
+\textbf{$H_{0}$} : La cantidad de carbón usada en la producción de acero no tiene efecto significativo en la resistencia a la tensión
+
+\textbf{$H_{1}$} : La cantidad de carbón usada en la producción de acero tiene efecto significativo en la resistencia a la tensión.
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{||c|c|c|c|c||}
+\hline
+\hline
+\% de Carbon  & \multicolumn{4}{c||}{Observaciones} \\
+\hline
+0.10 &23&28&28&30 \\
+\hline
+0.20 &31&29&36&38 \\
+\hline
+0.30 &36&40&42&44 \\
+\hline
+0.40 &48&45&40&40 \\
+\hline
+\hline
+
+\end{tabular}
+\caption{Resistencia a la Tensión}
+\end{table}
+
+<<>>=
+FCarbon<-c("0.10%","0.10%","0.10%",
+           "0.10%","0.20%","0.20%",
+           "0.20%","0.20%","0.30%",
+           "0.30%","0.30%","0.30%",
+           "0.40%","0.40%","0.40%",
+           "0.40%")
+Nivel<-factor(FCarbon)
+Datos<-c(23,28,28,30,31,29,36,38,36,40,42,44,48,45,40,40)
+Unifact<-aov(Datos~Nivel)
+Result<-summary(Unifact)
+Tabla <- xtable(Result)
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrrr}
+  \hline
+ & Df & Sum Sq & Mean Sq & F value & Pr($>$F) \\ 
+  \hline
+Nivel       & 3 & 622.25 & 207.42 & 15.41 & 0.0002 \\ 
+  Residuals   & 12 & 161.50 & 13.46 &  &  \\ 
+   \hline
+\end{tabular}
+\caption{Anova de un factor}
+\end{table}
+
+\textbf{Conclusión.}
+
+Se concluye que la cantidad de carbón usada en la producción de acero tiene efectos
+significativos en la resistencia a la tensión.
+Como se ha rechazado $H_0$, existe diferencia entre las medias de los tratamientos, pero no
+se especifica entre que medias de tratamientos existen las diferencias.
+Se podría estar interesado en querer saber entre que medias de tratamientos existe
+diferencia, para ello se utilizará el método de Tukey y LSD para contestar esta inquietud.
+
+\textbf{Estimacion de las medias de los tratamientos:}
+<<>>=
+library(ggplot2)
+library(gplots)
+boxplot(Datos~FCarbon,
+        ylab = "Resistencia a la tensión",
+        xlab = "Porcentaje de Carbón",
+        col=rainbow(5, alpha = .3))
+plotmeans(Datos~FCarbon,
+          ylab = "Resistencia a la tensión",
+          xlab = "Porcentaje de Carbón")
+@
+
+\textbf{Evaluacion de las diferencias entre los tratamientos:}
+
+Prueba LSD:
+<<>>=
+library(agricolae)
+data.Prueba1<- LSD.test(Unifact, "Nivel" )
+data.Prueba1.result1<- data.frame(data.Prueba1$statistics)
+data.Prueba1.result2<- data.frame(data.Prueba1$means)
+data.Prueba1.result3<- data.frame(data.Prueba1$groups)
+tabla1 <- xtable(data.Prueba1.result1)
+tabla2 <- xtable(data.Prueba1.result2)
+tabla3 <- xtable(data.Prueba1.result3)
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Mean & CV & MSerror & LSD \\ 
+  \hline
+  & 36.12 & 10.16 & 13.46 & 5.65 \\ 
+   \hline
+\end{tabular}
+\caption{Calculo del LSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrr}
+  \hline
+      & Means & std & r & LCL & UCL & Min & Max \\ 
+  \hline
+0.10\% & 27.25 & 2.99 &   4 & 23.25 & 31.25 & 23.00 & 30.00 \\ 
+  0.20\% & 33.50 & 4.20 &   4 & 29.50 & 37.50 & 29.00 & 38.00 \\ 
+  0.30\% & 40.50 & 3.42 &   4 & 36.50 & 44.50 & 36.00 & 44.00 \\ 
+  0.40\% & 43.25 & 3.95 &   4 & 39.25 & 47.25 & 40.00 & 48.00 \\ 
+   \hline
+\end{tabular}
+\caption{Estadisticos de los Tratamientos}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrl}
+  \hline
+ & trt & means & M \\ 
+  \hline
+  1 & 0.40\% & 43.25 & a \\ 
+  2 & 0.30\% & 40.50 & a \\ 
+  3 & 0.20\% & 33.50 & b \\ 
+  4 & 0.10\% & 27.25 & c \\ 
+   \hline
+\end{tabular}
+\caption{Comparaciones}
+\end{table}
+
+Las conclusiones principales se toman apartir de el cuadro 8, de manera que si se observa la columna "M" se deben hacer las combinaciones de las letras y éstas diferiran en media significativamente si en las combinaciones las letras no se repiten, es decir, la media en la resistencia a la tensión según en el porcentaje de carbón para los grupos 1 y 2 (30\% y 40\%) no difiere significativamente, sin embargo para las demas combinaciones 1 y 3, 1 y 4, 2 y 3, 2 y 4, 3 y 4, si difieren significativamente en la media de la resistencia, Para reforzar esta conlclusión se realizara la prueba de tukey.
+
+
+Prueba de Tukey: 
+<<>>=
+data.Prueba<-TukeyHSD(Unifact, ordered = TRUE)
+data.Prueba.result<- data.frame(data.Prueba$Nivel)
+Tabla<- xtable(data.Prueba.result)
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ Diferencias  & diff & lwr & upr & p.adj \\ 
+  \hline
+0.20\%-0.10\% & 6.25 & -1.45 & 13.95 & 0.13 \\ 
+  0.30\%-0.10\% & 13.25 & 5.55 & 20.95 & 0.00 \\ 
+  0.40\%-0.10\% & 16.00 & 8.30 & 23.70 & 0.00 \\ 
+  0.30\%-0.20\% & 7.00 & -0.70 & 14.70 & 0.08 \\ 
+  0.40\%-0.20\% & 9.75 & 2.05 & 17.45 & 0.01 \\ 
+  0.40\%-0.30\% & 2.75 & -4.95 & 10.45 & 0.72 \\ 
+   \hline
+\end{tabular}
+\caption{TukeyHSD}
+\end{table}
+
+Y efectivamente puede observarse que en la columna P.adj la comparación entre los grupos con 40\% y 30\% de carbón no difieren significativamente (igual al LSD) sin embargo en los grupos 20\% y 10\% de carbón  dado que el P.adj es mayor a 0.05 no existe diferencia significativa en las medias de esta comparación y si existe diferencia en las demas combinaciones, en definitiva puede decirse que el la prueba de tukey es mas precisa que el la prueba LSD dado que esta reporto un grupo más que no difieren significativamente en media.

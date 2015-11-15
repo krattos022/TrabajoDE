@@ -28,7 +28,7 @@
 \SweaveInput{Portada2.Rnw}
 \SweaveInput{Conceptos.Rnw}
 \SweaveInput{D_unifact.Rnw}
-
+\SweaveInput{D_Bloques.Rnw}
 
 \end{document}
 

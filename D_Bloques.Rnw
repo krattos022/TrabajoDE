@@ -1,0 +1,41 @@
+\newpage
+\chapter*{Diseños por Bloques}
+En todo Diseño de Experimento se desea que el Error Experimental sea lo más pequeño
+posible, ya que refleja tanto el Error aleatorio como la variabilidad entre las unidades
+experimentales o grupos de Unidades Experimentales; es decir, se trata de sustraer del Error
+Experimental la variabilidad producida por las unidades experimentales o grupos de Unidades
+Experimentales.
+
+Para lograr lo anterior, las unidades experimentales se deben distribuir aleatoriamente
+en grupos o bloques, de tal manera que dentro de un bloque sean relativamente homogéneas y
+que el número de ellas dentro de un bloque sea igual al número de tratamientos por investigar.
+A esta forma de organizar y distribuir las unidades Experimentales se le denomina \textbf{Diseño por Bloques.}
+
+El principio de bloqueo se basa en que las unidades experimentales dentro de cada
+bloque o grupo deben ser parecidas entre si (que exista homogeneidad dentro del bloque) y
+que los bloques debieran ser diferentes entre si (que exista heterogeneidad entre los bloques);
+y además que las unidades experimentales se deben distribuir aleatoriamente en los grupos o
+bloques de tal manera que dentro de un bloque sean relativamente homogéneas; lo que
+significa que el bloqueo o agrupamiento del material experimental debe hacerse de tal forma
+que las unidades experimentales dentro de un bloque sean tan homogéneas como sea posible y
+que las diferencias entre las unidades experimentales sean explicadas, en mayor proporción,
+por las diferencias entre los bloques. Esta técnica es una generalización de la prueba de
+comparación de medias de muestras apareadas, donde cada pareja es un bloque. Para la
+validez del análisis, se supone que no existe interacción entre los bloques y los tratamientos.
+En experimentos de campo, cuando no se tenga información segura sobre la
+uniformidad del terreno, siempre es preferible introducir bloques, que servirán para separar la
+variabilidad debido a dicha heterogeneidad.
+
+Los Diseños que cumplen estas características y que son objeto de estudio, se
+clasifican en:
+\begin{enumerate}
+  \item Diseños Aleatorizados por Bloques Completos.
+  \item Diseños Aleatorizados por Bloques Incompletos Balanceados.
+\end{enumerate}
+En este documento se hara referencia unicamente a los Diseños Aleatorizados por Bloques Completos.
+
+\textbf{Ejemplo 1.}
+<<>>=
+
+@
+

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.9)  13 NOV 2015 21:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.9)  15 NOV 2015 12:29
 entering extended mode
 **TrabajoDE.tex
 (C:\Users\Fernando\Documents\TrabajoDE\TrabajoDE.tex
@@ -739,7 +739,7 @@ ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 26.
 
 (C:\Users\Fernando\Documents\TrabajoDE\TrabajoDE-concordance.tex)
-<Minerva.png, id=6, 286.1892pt x 367.6134pt>
+<Minerva.png, id=7, 286.1892pt x 367.6134pt>
 File: Minerva.png Graphic file (type png)
  <use Minerva.png>
 Package pdftex.def Info: Minerva.png used on input line 34.
@@ -770,33 +770,35 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 188.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [5]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 223.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 225.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-) [6] [7]
-(C:\Users\Fernando\Documents\TrabajoDE\TrabajoDE.aux) ) 
+) [6] [7] [8] [9] [10]
+[11] [12] [13
+
+] [14] (C:\Users\Fernando\Documents\TrabajoDE\TrabajoDE.aux) ) 
 Here is how much of TeX's memory you used:
- 5552 strings out of 493921
- 71162 string characters out of 3147273
- 139060 words of memory out of 3000000
- 8706 multiletter control sequences out of 15000+200000
- 26709 words of font info for 66 fonts, out of 3000000 for 9000
+ 5561 strings out of 493921
+ 71253 string characters out of 3147273
+ 142060 words of memory out of 3000000
+ 8712 multiletter control sequences out of 15000+200000
+ 28859 words of font info for 69 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 35i,10n,35p,413b,345s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\Fernando\AppD
-ata\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmsltt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-msy10.pfb>
-Output written on TrabajoDE.pdf (8 pages, 379876 bytes).
+ 35i,10n,35p,641b,345s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\Fernan
+do\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmsltt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb>
+Output written on TrabajoDE.pdf (15 pages, 396064 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
+ 93 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 30 words of extra memory for PDF output out of 10000 (max. 10000000)
 
