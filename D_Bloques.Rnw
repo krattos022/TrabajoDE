@@ -51,6 +51,44 @@ dentro de cada bloque. Los novillos más pesados se agruparon en un bloque, en o
 agruparon los 5 siguientes más pesados y así sucesivamente. Se obtuvieron los siguientes
 datos:
 
+\begin{table}[htb]
+\centering
+\begin{tabular}{||c|c|c|c|c||}
+\hline
+\hline
+\multirow{2}{*}{Raciones}  & \multicolumn{4}{|c||}{Bloques} \\
+\cline{2-5}
+     &1&2&3&4 \\
+\hline
+Ración 1 &0.9&1.4&1.4&2.3 \\
+\hline
+Ración 2 &3.6&3.2&4.5&4.1 \\
+\hline
+Ración 3 &0.5&0.9&0.5&0.9 \\
+\hline
+Ración 4 &3.6&3.6&3.2&3.6 \\
+\hline
+Ración 5 &1.8&1.8&0.9&1.4 \\
+\hline
+\hline
+
+\end{tabular}
+\caption{Peso de los novillos}
+\end{table}
+
+\textbf{Solución}
+
+Antes de realizar los cálculos matemáticos, se definirán las hipótesis que se desean probar.
+
+$H_0 : \mu_1 = \mu_2 = \mu_3 = \mu_4 = \mu_5$ (No existe diferencia entre las Raciones)
+$H_1 : \mu_1 \not= \mu_2 \not= \mu_3 \not= \mu_4 \not= \mu_5$ (Existe diferencia entre las Raciones)
+
+\textbf{Variable Respuesta:} Peso de los Novillos.
+
+\textbf{El significado verbal es:}
+
+$H_0$ : La cantidad de ración no influye en el engorde de los novillos.
+$H_1$ : La cantidad de ración influye en el engorde de los novillos
 
 
 <<>>=
@@ -102,7 +140,7 @@ plotmeans(datos$Observaciones~datos$Raciones,
           ylab = "Pesos",
           xlab = "Raciones")
 @
-\newpage
+
 Prueba LSD:
 <<>>=
 library(agricolae)
@@ -188,8 +226,9 @@ Tabla<- xtable(data.Prueba.result)
 10&R2-R4 & 0.35 & -0.65 & 1.35 & 0.79 \\ 
    \hline
 \end{tabular}
+\caption{TukeyHSD}
 \end{table}
-
+\newpage
 \textbf{Conclusión}
 
 Puede observarse que en las combinaciones 1,2,5,10 no existe diferencia significativa en la media del peso de los novillos.
@@ -197,3 +236,200 @@ Puede observarse que en las combinaciones 1,2,5,10 no existe diferencia signific
 \newpage
 
 \textbf{Ejemplo 2.}
+
+Un ingeniero de control de calidad para manufacturas de componentes electrónicos,
+intuitivamente siente que hay mucha variabilidad entre los 36 hornos usados por la compañía
+manufacturera para la cual trabaja, en las pruebas de duración de los diversos componentes.
+Para determinar si tiene razón, escoge un sólo tipo de componente y obtiene los siguientes
+datos para las 2 temperaturas (T) normalmente usadas en las pruebas de duración de estas
+unidades; T1 = 550ºF y T2 = 600ºF. El componente se pone a funcionar en un horno hasta que
+falla. En este experimento se utilizaron 3 hornos (H) seleccionados aleatoriamente y se midió
+los minutos de duración del componente electrónico. Con un 5\% de significancia, pruebe si el
+ingeniero tiene razón en su creencia de la diferencia entre los 36 hornos. Los datos obtenidos
+son los siguiente:
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{||c|c|c||}
+\hline
+\hline
+\multirow{2}{*}{Hornos}  & \multicolumn{2}{|c||}{Temperatura} \\
+\cline{2-3}
+         &550ºF&600ºF \\
+\hline
+$H_1$       &246&180 \\
+\hline
+$H_2$       &191&144 \\
+\hline
+$H_3$       &187&134 \\
+\hline
+\hline
+
+\end{tabular}
+\caption{Temperaturas}
+\end{table}
+
+\textbf{Solución}
+
+Antes de realizar los cálculos matemáticos, se definirán las hipótesis que se desean probar; ya
+que hay dieciséis hornos y solo se toman tres aleatoriamente es un Modelo de Efectos
+aleatorios.
+
+$H_0 : \sigma^{2}_t = 0$ (No existe variabilidad entre los Hornos)
+
+$H_1 : \sigma^{2}_t > 0$ (Existe variabilidad entre los Hornos)
+
+\textbf{Variable Respuesta:} Duración del componente electrónico.
+
+\textbf{El significado verbal es:}
+
+$H_0$ : La variabilidad entre los Hornos no influyen significativamente en la duración del
+componente electrónico probado.
+
+$H_1$ : La variabilidad entre los Hornos influyen significativamente en la duración del componente
+electrónico probado.
+
+<<>>=
+library(xtable)
+#Leemos la hoja de datos
+datos<-read.csv("Ej2_B.csv", header = TRUE, sep = ";")
+#Analysis of Variance(aov) para un factor
+DBloques<- aov(datos$Obs ~ datos$Hornos + datos$Temperaturas)
+Resultado<-summary(DBloques)
+#su equivalente
+Resultado2<- anova(DBloques)
+#genarando el codigo latex para la tabla
+# de ANOVA
+Resultado3<- xtable(Resultado2) 
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrrr}
+  \hline
+ & Df & Sum Sq & Mean Sq & F value & Pr($>$F) \\ 
+  \hline
+Hornos & 2 & 3250.33 & 1625.17 & 34.46 & 0.0282 \\ 
+Temperaturas & 1 & 4592.67 & 4592.67 & 97.37 & 0.0101 \\ 
+  Residuals & 2 & 94.33 & 47.17 &  &  \\ 
+   \hline
+\end{tabular}
+\caption{Análisis de Varianza}
+\end{table}
+
+\textbf{Conclusión}
+
+Puede observarse de la tabla de análsis e varianza que tanto bloques (temperaturas) y hornos son significativos por lo tanto, los tipos de hornos influyen significativamente en la duración del componente electrónico probado y separar los hornos en bloques por temperaturas ayuda a reducir la variabilidad del factor, el cual es el proposito del bloque.
+
+Como en el ejercicio 2, fue rechazada la hipótesis nula. Supongamos que se desea
+saber cuales son las parejas de medias que son diferentes; para ello se utilizará el Método de la
+Mínima Diferencia Significativa (LSD) y tukey.
+
+\textbf{Estimacion de las medias de los tratamientos:}
+<<>>=
+library(ggplot2)
+library(gplots)
+boxplot(datos$Obs~datos$Hornos,
+        ylab = "Temperaturas",
+        xlab = "Hornos",
+        col=rainbow(5, alpha = .3))
+plotmeans(datos$Obs~datos$Hornos,
+          ylab = "Temperaturas",
+          xlab = "Hornos")
+@
+
+Prueba LSD:
+<<>>=
+library(agricolae)
+data.Prueba1<- LSD.test(DBloques, "datos$Hornos")
+data.Prueba1.result1<- data.frame(data.Prueba1$statistics)
+data.Prueba1.result2<- data.frame(data.Prueba1$means)
+data.Prueba1.result3<- data.frame(data.Prueba1$groups)
+tabla1 <- xtable(data.Prueba1.result1)
+tabla2 <- xtable(data.Prueba1.result2)
+tabla3 <- xtable(data.Prueba1.result3)
+@
+\newpage
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Mean & CV & MSerror & LSD \\ 
+  \hline
+  & 180.33 & 3.81 & 47.17 & 29.55 \\ 
+   \hline
+\end{tabular}
+\caption{Calculo del LSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrr}
+  \hline
+ & datos.Obs & std & r & LCL & UCL & Min & Max \\ 
+  \hline
+H1 & 213.00 & 46.67 &   2 & 192.11 & 233.89 & 180.00 & 246.00 \\ 
+  H2 & 167.50 & 33.23 &   2 & 146.61 & 188.39 & 144.00 & 191.00 \\ 
+  H3 & 160.50 & 37.48 &   2 & 139.61 & 181.39 & 134.00 & 187.00 \\ 
+   \hline
+\end{tabular}
+\caption{Estadísticos}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrl}
+  \hline
+ & trt & means & M \\ 
+  \hline
+1 & H1 & 213.00 & a \\ 
+  2 & H2 & 167.50 & b \\ 
+  3 & H3 & 160.50 & b \\ 
+   \hline
+\end{tabular}
+\caption{Comparaciones}
+\end{table}
+
+\textbf{Conclusión}
+
+Se observa que la pareja de medias que no difieren significativamente son la media dos
+y la media tres; por lo tanto, no existe diferencia significativa entre el Horno dos y tres, las parejas de medias uno y dos, uno y tres al hacer las combinaciones las letras se no se repiten; por lo tanto, las dos
+parejas de medias difieren significtivamente; es decir que existe diferencia significativa
+entre el Horno uno con los Hornos dos y tres.
+
+Prueba de Tukey:
+<<>>=
+data.Prueba<-TukeyHSD(DBloques, ordered = TRUE)
+data.Prueba.result<- data.frame(data.Prueba$`datos$Hornos`)
+Tabla<- xtable(data.Prueba.result)
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrr}
+  \hline
+ & diff & lwr & upr & p.adj \\ 
+  \hline
+  1&H2-H3 & 7.00 & -33.46 & 47.46 & 0.64 \\ 
+  2&H1-H3 & 52.50 & 12.04 & 92.96 & 0.03 \\ 
+  3&H1-H2 & 45.50 & 5.04 & 85.96 & 0.04 \\ 
+   \hline
+\end{tabular}
+\caption{TukeyHSD}
+\end{table}
+\newpage
+\textbf{Conclusión}
+
+Puede notarse que el P.adj para la comparacion 1 es mayor a 0.05 por lo que no existe diferencia significativa entre las medias del horno 2 y 3.
+
+\textbf{Con respecto a las Temperaturas:}
+
+Pudo observarse que adiferencia del ejemplo 1, en el ejemplo dos los bloques si son significativos por lo tanto puede decirse que éstos tiene un efecto significativo en los componenetes electronicos, para saber cual es su efecto se realiza el siguiente procedimiento:
+
+<<>>=
+model.tables(DBloques)
+@
+Para los hornos en H1 aumentara la temperatura si se colocan los componentes en el horno 1. y disminuirá en -12.83ºF y -19.83ºF si se coloca el componente en el Horno 2 y 3 respectivamente. 
+
+El 27.667 para T1 significa que la tempreratura aumentara en 27.667ºF si se colocan los componentes en el Bloque 1 y disminuira -27.667ºF si se coloca en el Bloque 2.
+

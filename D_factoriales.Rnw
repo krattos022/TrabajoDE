@@ -1,0 +1,404 @@
+\chapter*{Diseños Factoriales}
+En muchas situaciones experimentales resulta de interés estudiar los efectos producidos
+por dos o más factores simultáneamente; esto se logra con la ayuda de los Diseños Factoriales.
+En general los Diseños Factoriales producen experimentos más eficientes, ya que cada
+observación proporciona información sobre todos los factores, y es posible ver las respuestas
+de un factor en diferentes niveles de otro factor en el mismo experimento. Por lo tanto, se
+entiende por Diseño Factorial a aquel diseño en el cual se pueden estudiar los efectos de dos
+o más factores de variación a la vez; es decir, que se puede investigar todas las posibles
+combinaciones de los niveles de los factores en cada ensayo completo o réplica del
+experimento.
+Cada uno de los factores en estudio varían en su aplicación, a esta variación se le llama
+Niveles del Factor. Las combinaciones de los niveles de cada factor, forman los respectivos
+tratamientos.
+En un diseño factorial, los factores en estudio se representan por letras mayúsculas
+(A,B,C,……) y los niveles de cada uno por sus respectivas letras minúsculas (a,b,c,……). Los
+cuales pueden tomar valores de 2,3,4, ……
+Existen experimentos factoriales Balanceados y Desbalanceados; diremos que es
+balanceado cuando el número de réplicas es igual para cada uno de los tratamientos usados en
+el experimento; en caso contrario es Desbalanceado; también se puede dar el caso en que sólo
+exista una sola réplica para cada tratamiento. Los Diseños factoriales se pueden combinar con
+los Diseños Completamente al Azar (Unifactoriales), o con el Diseño de Bloques Aleatorios, etc.,
+dependiendo de la naturaleza del experimento.
+
+Entre las Ventajas de usar un diseño Factorial, se pueden mencionar las siguientes:
+\begin{enumerate}
+\item Ahorro y economía del recurso experimental; ya que cada unidad experimental provee
+información acerca de dos o más factores, lo que no sucede cuando se realiza con una serie
+de experimentos simples.
+
+\item Da información respecto a las interacciones entre los diversos factores en estudio.
+
+\item Permite realizar estimaciones de las interacciones de los factores, además de los efectos
+simples.
+
+\item Permite estimar los efectos de un factor en diversos niveles de los otros factores,
+produciendo conclusiones que son válidas sobre toda la extensión de las condiciones
+experimentales.
+\end{enumerate}
+
+La única desventaja es que si el número de niveles de algunos de los factores o el número
+de factores es demasiado grande, entonces el número de todas las combinaciones posibles de
+tratamientos de factores llega a ser un número grande, en consecuencia la variabilidad en el
+experimento podría ser grande. Estas dos situaciones, pueden hacer difícil detectar los efectos
+significativos en el experimento.
+Se entiende por efecto de un factor al cambio en la respuesta media ocasionada por un
+cambio en el nivel de ese factor.
+
+En los diseños factoriales existen tres efectos, los cuales son:
+\begin{enumerate}
+\item \textbf{Efecto Simple:} son comparaciones entre los niveles de un factor a un sólo nivel del otro
+factor.
+\item \textbf{Efecto Principal:} son comparaciones entre los niveles de un factor promediados para
+todos los niveles del otro factor.
+\item \textbf{Efecto de Interacción:} Miden las diferencias entre los efectos simples de un factor a
+diferentes niveles de otro factor; es decir, la diferencia en la respuesta entre los niveles de
+un factor no es la misma en todos los niveles de los otros factores.
+\end{enumerate}
+\newpage
+\section*{Diseño Bifactorial}
+El diseño factorial más simple o sencillo es aquel que involucra en su estudio sólo dos
+factores o conjunto de tratamientos; es decir, que sólo se está interesado en los efectos que
+producen estos dos factores. A este tipo de diseño se le llama Bifactorial.
+Si A y B son los factores que se van ha estudiar en un diseño factorial, el factor A tendrá
+"a niveles" y el factor B tendrá "b niveles", entonces cada repetición o réplica del experimento
+contiene todas las "ab" combinaciones de los tratamientos y en general hay "n" repeticiones, es
+necesario tener al menos dos réplicas (n≥2), para poder obtener la suma de cuadrados del
+error.
+
+\textbf{Ejemplo 1.}
+
+Se llevó a cabo un estudio del efecto de la temperatura sobre el porcentaje de encogimiento de
+telas teñidas, con dos réplicas para cada uno de cuatro tipos de tela en un diseño totalmente
+aleatorizado. Los datos son el porcentaje de encogimiento de dos réplicas de tela secadas a
+cuatro temperaturas; los cuales se muestran a continuación.
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{||c|c|c|c|c||}
+\hline
+\hline
+\multirow{2}{*}{Factor A (Telas)} & \multicolumn{4}{c||}{Factor B (Temperatura)} \\
+\cline{2-5}
+                   &210ºF&215ºF&220ºF&225ºF \\
+\hline
+\multirow{2}{*}{1} &1.8&2.0&4.6&7.5 \\
+                   &2.1&2.1&5.0&7.9 \\
+\hline
+\multirow{2}{*}{2} &2.2&4.2&5.4&9.8 \\
+                   &2.4&4.0&5.6&9.2 \\
+\hline
+\multirow{2}{*}{3} &2.8&4.4&8.7&13.2 \\
+                   &3.2&4.8&8.4&13.0 \\
+\hline
+\multirow{2}{*}{4} &3.2&3.3&5.7&10.9 \\
+                   &3.6&3.5&5.8&11.1 \\
+\hline
+\hline
+
+\end{tabular}
+\caption{Porcentaje de encogimiento de la tela}
+\end{table}
+\newpage
+
+\textbf{Solución}
+
+En este ejemplo el análisis se hará como un Modelo de Efectos Fijos; ya que el
+investigador define con su propio criterio las temperaturas y los tipos de telas que va ha utilizar para llevar a cabo este experimento.
+
+\textbf{Variable Respuesta:} Porcentaje de encogimiento de la tela teñida.
+
+\textbf{Planteamiento de las Hipótesis a probar:}
+
+Con el objetivo de ejemplificar el Análisis de Varianza de este tipo de Modelo, se plantearan
+las tres hipótesis en forma Estadística que se desean probar.
+\begin{enumerate}
+\item $H_0 : \uptau_1 = \uptau_2 = \uptau_3 = \uptau_4 = 0$
+
+      $H_1$ : Cuando menos un $\uptau_i \not= 0$
+
+\item $H_0 : \beta_1 = \beta_2 = \beta_3 = \beta_4 = 0$
+
+      $H_1$ : Cuando menos un $\beta_j \not= 0$
+
+\item $H_0 : (\uptau\beta)_{ij} = 0$, para todo ij.
+
+      $H_1$ : Cuando menos un $(\uptau\beta)_{ij} \not= 0$
+\end{enumerate}
+
+\textbf{Forma verbal de las Hipótesis}
+
+\begin{enumerate}
+
+\item $H_0$ : El tipo de tela no influye en el porcentaje de encogimiento de la tela teñida.
+
+$H_1$ : El tipo de tela influye en el porcentaje de encogimiento de la tela teñida .
+
+\item $H_0$ : Los niveles de temperatura no influyen en el porcentaje de encogimiento de
+la tela teñida.
+
+$H_1$ : Los niveles de temperatura influyen en el porcentaje de encogimiento de la
+tela teñida.
+
+\item $H_0$ : La combinación del tipo de tela teñida y la temperatura no influye significativamente en el porcentaje de encogimiento de la tela.
+
+$H_1$ : La combinación del tipo de tela teñida y la temperatura influye significativamente en
+el porcentaje de encogimiento de la tela.
+\end{enumerate}
+
+<<>>=
+library(xtable)
+#Leemos la hoja de datos
+datos<-read.csv("Ej1_F.csv", header = TRUE, sep = ";")
+#Analysis of Variance(aov) para 2 factores
+D2Fact<- aov(datos$obs~ datos$Tela*datos$Temperatura)
+Resultado<-summary(D2Fact)
+#su equivalente
+Resultado2<- anova(D2Fact)
+#genarando el codigo latex para la tabla
+# de ANOVA
+Resultado3<- xtable(Resultado2) 
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrrr}
+  \hline
+ & Df & Sum Sq & Mean Sq & F value & Pr($>$F) \\ 
+  \hline
+Tela & 3 & 41.88 & 13.96 & 279.18 & 0.0000 \\ 
+Temperatura & 3 & 283.94 & 94.65 & 1892.91 & 0.0000 \\ 
+Tela:Temperatura & 9 & 15.86 & 1.76 & 35.24 & 0.0000 \\ 
+Residuals & 16 & 0.80 & 0.05 &  &  \\ 
+   \hline
+\end{tabular}
+\caption{Análisis de Varianza}
+\end{table}
+
+\textbf{Conlusiones}
+
+\begin{enumerate}
+
+\item {Respecto a la hipótesis 1. (Factor A(Tipo de Tela))}
+
+Se observa de la tabla de Análisis de Varianza que el P.adj < 0.05; por lo tanto,
+se rechaza $H_0$; es decir, el tipo de tela teñida influye significativamente en el porcentaje de encogimiento de ella.
+
+\item {Respecto a la hipótesis 2 (Factor B(Temperatura))}
+
+Se observa de la tabla de Análisis de Varianza que el P.adj < 0.05; por lo tanto, se
+rechaza $H_0$; es decir, los niveles de temperatura influyen significativamente en el porcentaje de encogimiento de la tela teñida.
+
+\item {Respecto a la hipótesis 3 (Interacción(Tipo de tela y Temperatura))}
+
+Se observa de la tabla de Análisis de Varianza que el P.adj < 0.05; por lo tanto, se
+rechaza $H_0$; es decir, la combinación de el tipo de tela teñida y los niveles de temperatura
+influyen en el porcentaje de encogimiento de la tela teñida.
+\end{enumerate}
+
+\section*{Diseño Trifactorial}
+Estos tipos de Diseños experimentales son aquellos en los cuales se involucran en su
+estudio tres factores; es decir, que se esta interesado en los efectos que producen los tres
+factores en la variable respuesta en forma individual y conjunta (interacción). A los cuales se
+les llama Diseños Trifactoriales.
+
+Sean, A,B y C los factores que se van a estudiar en un experimento; el factor A tiene
+“a” niveles, el factor B tiene “b” niveles y el factor C tiene “c” niveles; por lo tanto, cada
+repetición del experimento tiene todas la “abc” combinaciones de tratamiento y en general hay
+“n” repeticiones $(n ≥ 2)$. El orden en que se toman las “abcn” observaciones en el experimento
+debe ser aleatorio, de modo que este es un Diseño completamente aleatorizado.
+Existen tres efectos principales (A,B y C), tres efectos dobles (AB,AC y BC) y un efecto
+triple (ABC).
+
+Los niveles de cada uno de los factores pueden ser elegidos de forma aleatoria, si es así
+los factores son aleatorios o ser elegidos específicamente por el experimentador; es decir, los
+que a él le interesan estudiar, entonces los factores son fijos.
+
+Por lo tanto, de acuerdo a la forma en que son elegidos los niveles de los factores, así es
+el Modelo que resulta y el Análisis de Varianza que se lleva a cabo.
+
+\textbf{Ejemplo 2.}
+
+En un experimento para investigar las propiedades de resistencia a la compresión de
+mezclas de Cemento y Tierra, se utilizaron dos períodos (Edad A) diferentes de curado en
+combinación con dos Temperaturas(B) diferentes de curado y dos tierras(C) diferentes. Se
+hicieron dos réplicas para cada combinación de niveles de los tres factores, resultando los
+siguientes datos:
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{||c|c|c|c|c||}
+\hline
+\hline
+\multirow{4}{*}{Factor A (Edad)} & \multicolumn{4}{c||}{Factor B (Temperatura)} \\
+\cline{2-5}
+                    & \multicolumn{2}{c|}{1} & \multicolumn{2}{c||}{2} \\
+\cline{2-5}
+                    & \multicolumn{2}{c|}{Factor C (tierra)} & \multicolumn{2}{c||}{Factor C (tierra)}\\
+\cline{2-5}
+
+                   & 1 & 2 & 1 & 2 \\
+\hline
+\multirow{2}{*}{1} &471&385&485&530 \\
+                   &413&434&552&593 \\
+\hline
+\multirow{2}{*}{2} &712&770&712&741 \\
+                   &637&705&789&806 \\
+\hline
+\hline
+
+\end{tabular}
+\caption{Resistencia a la compresión de la mezcla de Cemento y Tierra}
+\end{table}
+
+\textbf{Solución}
+
+\textbf{Planteamiento de las hipótesis a probar}
+
+\textbf{Forma Estadística:}
+\begin{enumerate}
+  \item $H_0: \uptau_1 = \uptau_2 = 0$
+  
+        $H_1$:cuando menos un $\uptau_i \not= 0$                     
+  \item $H_0:\beta_1 = \beta_2 = 0$ 
+  
+        $H_1$:cuando menos un $\beta_j \not= 0$                                   
+  \item $H_0: \gamma_1 = \gamma_2 =0$  
+  
+        $H_1$:cuando menos un $\gamma_k \not= 0$                       
+  \item $H_0: (\uptau\beta)_{ij} = 0$, para todo ij   
+  
+        $H_1$: cuando menos un $(\uptau\beta)_{ij} \not= 0$                   
+  \item $H_0: (\uptau\gamma)_{ik} = 0$, para todo ik
+  
+        $H_1$: cuando menos un $(\uptau\gamma)_{ik} \not= 0$
+  \item $H_0: (\beta\gamma)_{jk} = 0$, para todo jk
+  
+        $H_1$: cuando menos un $(\beta\gamma)_{jk} \not= 0$
+  \item $H_0: (\uptau\beta\gamma)_{ijk} = 0$, para todo ijk
+  
+        $H_1$:cuando menos un  $(\uptau\beta\gamma)_{ijk} \not= 0$
+\end{enumerate}
+
+\textbf{Variable Respuesta:} Resistencia a la compresión de la mezcla de Cemento y Tierra.
+
+\textbf{Forma Verbal}
+\begin{enumerate}
+
+\item $H_0$: La edad o períodos no influye significativamente en las propiedades de resistencia a la
+compresión de mezclas de Cemento y Tierra.
+
+      $H_1$: La edad o períodos influye significativamente en las propiedades de resistencia a la
+compresión de mezclas de Cemento y Tierra.
+
+\item $H_0$: La Temperatura no influye significativamente en las propiedades de resistencia a la
+compresión de mezclas de Cemento y Tierra.
+
+      $H_1$: La Temperatura influye significativamente en las propiedades de resistencia a la
+compresión de mezclas de Cemento y Tierra.
+
+\item $H_0$: Los tipos de tierra no influyen significativamente en las propiedades de resistencia a la
+compresión de mezclas de Cemento y Tierra.
+
+      $H_1$: Los tipos de tierra influyen significativamente en las propiedades de resistencia a la
+compresión de mezclas de Cemento y Tierra.
+
+\item $H_0$: La edad y la temperatura no influyen significativamente en las propiedades de
+resistencia a la compresión de mezclas de Cemento y Tierra.
+
+      $H_1$: La edad y la temperatura influyen significativamente en las propiedades de
+resistencia a la compresión de mezclas de Cemento y Tierra
+
+\item $H_0$: La edad y los tipos de tierra no influyen significativamente en las propiedades de
+resistencia a la compresión de mezclas de Cemento y Tierra.
+
+      $H_1$: La edad y los tipos de tierra influyen significativamente en las propiedades de
+resistencia a la compresión de mezclas de Cemento y Tierra.
+
+\item $H_0$: La temperatura y los tipos de tierra no influyen significativamente en las propiedades
+de resistencia a la compresión de mezclas de Cemento y Tierra.
+
+      $H_1$: La temperatura y los tipos de tierra influyen significativamente en las propiedades de
+resistencia a la compresión de mezclas de Cemento y Tierra.
+
+\item $H_0$: La edad, Temperatura y tipos de tierra no influyen significativamente en las
+propiedades de resistencia a la compresión de mezclas de Cemento y Tierra.
+
+      $H_1$: La edad, Temperatura y tipos de tierra influyen significativamente en las propiedades
+de resistencia a la compresión de mezclas de Cemento y Tierra
+\end{enumerate}
+
+<<>>=
+library(xtable)
+#Leemos la hoja de datos
+datos<-read.csv("Ej2_F.csv", header = TRUE, sep = ";")
+#Analysis of Variance(aov) para 2 factores
+D3Fact<- aov(datos$OBS~ datos$Edad*datos$Temperatura*datos$Tierra)
+Resultado<-summary(D3Fact)
+#su equivalente
+Resultado2<- anova(D3Fact)
+#genarando el codigo latex para la tabla
+# de ANOVA
+Resultado3<- xtable(Resultado2) 
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrrr}
+  \hline
+ & Df & Sum Sq & Mean Sq & F value & Pr($>$F) \\ 
+  \hline
+Edad & 1 & 252255.06 & 252255.06 & 117.92 & 0.0000 \\ 
+Temperatura & 1 & 28985.06 & 28985.06 & 13.55 & 0.0062 \\ 
+Tierra & 1 & 2328.06 & 2328.06 & 1.09 & 0.3273 \\ 
+Edad:Temperatura & 1 & 3393.06 & 3393.06 & 1.59 & 0.2434 \\ 
+Edad:Tierra & 1 & 1425.06 & 1425.06 & 0.67 & 0.4380 \\ 
+Temperatura:Tierra & 1 & 315.06 & 315.06 & 0.15 & 0.7111 \\ 
+Edad:Temperatura:datos\$Tierra & 1 & 3335.06 & 3335.06 & 1.56 & 0.2471 \\ 
+Residuals & 8 & 17113.50 & 2139.19 &  &  \\ 
+   \hline
+\end{tabular}
+\caption{Análisis de Varianza}
+\end{table}
+
+\textbf{Conclusiones}
+
+Se tiene:
+\begin{enumerate}
+
+\item {\textbf{Respecto a la Hipótesis 1 (Factor A(Edad))}}
+Se observa de la tabla de Análisis de Varianza que el P.adj < 0.05; por lo tanto,
+se rechaza $H_0$; es decir, la edad o períodos influye significativamente en las propiedades de
+resistencia a la compresión de mezclas de Cemento y Tierra.
+
+\item {\textbf{Respecto a la Hipótesis 2 (Factor B (Temperatura))}}
+Se observa de la tabla de Análisis de Varianza que el P.adj < 0.05; por lo tanto,
+se rechaza H0; es decir, la Temperatura influye significativamente en las propiedades de
+resistencia a la compresión de mezclas de Cemento y Tierra.
+
+\item {\textbf{Respecto a la Hipótesis 3 (Factor C (Tierra))}}
+Se observa de la tabla de Análisis de Varianza que el P.adj > 0.05; por lo tanto, se
+acepta H0; es decir, los tipos de tierra no influyen significativamente en las propiedades de
+resistencia a la compresión de mezclas de Cemento y Tierra.
+
+\item {\textbf{Respecto a la Hipótesis 4 (Interacción(Edad y Temperatura))}}
+Se observa de la tabla de Análisis de Varianza que el P.adj > 0.05; por lo tanto, se
+acepta H0; es decir, la edad y la temperatura no influye significativamente en las propiedades
+de resistencia a la compresión de mezclas de Cemento y Tierra.
+
+\item {\textbf{Respecto a la Hipótesis 5 (Interacción(Edad y Tierra))}}
+Se observa de la tabla de Análisis de Varianza que el P.adj > 0.05; por lo tanto, se
+acepta H0; es decir, la edad y los tipos de tierra no influyen significativamente en las
+propiedades de resistencia a la compresión de mezclas de Cemento y Tierra.
+
+\item {\textbf{Respecto a la Hipótesis 6 (Interacción(Temperatura y Tierra))}}
+Se observa de la tabla de Análisis de Varianza que el P.adj > 0.05; por lo tanto, se
+acepta H0; es decir, la temperatura y los tipos de tierra no influyen significativamente en las
+propiedades de resistencia a la compresión de mezclas de Cemento y Tierra.
+
+\item {\textbf{Respecto a la Hipótesis 7 (Interacción(Edad,Temperatura y Tierra))}}
+Se observa de la tabla de Análisis de Varianza que el P.adj > 0.05; por lo tanto, se
+acepta H0; es decir, la edad, Temperatura y tipos de tierra no influyen significativamente en
+las propiedades de resistencia a la compresión de mezclas de Cemento y Tierra.
+
+\end{enumerate}

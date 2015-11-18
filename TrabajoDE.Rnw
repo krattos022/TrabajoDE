@@ -19,6 +19,9 @@
 \usepackage{xcolor}
 \titleformat{\chapter}[display]{\bfseries\Huge}{\Huge\thechapter.}{0.5em}{}
 \titlespacing{\chapter}{0pt}{0ex}{1pc}
+\titleformat{\section}[display]{\bfseries\Huge}{\Huge\thechapter.}{0.5em}{}
+\titlespacing{\section}{0pt}{0ex}{1pc}
+\usepackage{upgreek}
 \widowpenalty=10000  
 \clubpenalty=10000
 \usepackage{multirow}
@@ -29,7 +32,7 @@
 \SweaveInput{Conceptos.Rnw}
 \SweaveInput{D_unifact.Rnw}
 \SweaveInput{D_Bloques.Rnw}
-
+\SweaveInput{D_factoriales.Rnw}
 \end{document}
 
 
