@@ -196,6 +196,117 @@ rechaza $H_0$; es decir, la combinación de el tipo de tela teñida y los nivele
 influyen en el porcentaje de encogimiento de la tela teñida.
 \end{enumerate}
 
+\newpage
+\textbf{Ejemplo 2.}
+
+Como ejemplo consideramos las diferencias que aparecen al pesar un reactivo en un laboratorio debido a las balanzas utilizadas y a la habilidad del personal que realiza las pesadas, se usa una muestra de tres balanzas yd e cuatro personas del laboratorio para realizar las pesadas. A fin de contrastar la hipótesis de igualdad en las balanzas y de similaridad en la habilidad de personal, cada una de las cuatro personas efectúa tres pesadas con cada balanza, se obtienen los siguientes resultados:
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{||c|c|c|c|c||}
+\hline
+\hline
+\multirow{2}{*}{Factor A (Balanzas)} & \multicolumn{4}{c||}{Factor B (Personal)} \\
+\cline{2-5}
+                   &1&2&3&4 \\
+\hline
+\multirow{3}{*}{1} &1.81&2.04&2.03&2.05 \\
+                   &1.91&1.97&1.98&1.96 \\
+                   &1.91&1.99&2.07&2.07 \\
+\hline
+\multirow{3}{*}{2} &1.94&2.08&2.03&2.23 \\
+                   &1.90&2.14&1.98&2.34 \\
+                   &1.99&2.08&2.00&2.32 \\
+\hline
+\multirow{3}{*}{3} &1.83&1.98&1.91&2.19 \\
+                   &1.92&2.05&2.06&2.24 \\
+                   &1.96&2.03&2.04&2.21 \\
+
+\hline
+\hline
+
+\end{tabular}
+\caption{Peso del Reactivo}
+\end{table}
+
+
+¿Puede asegurarse a un nivel de significación del 10\% que hay habilidad homogénea de todos los obreros? ¿Puede asegurarse que las tres balanzas pesan igual? Estime las variabilidades originadas por als personas, las balanzas y la interacción entre las mismas y por el error asi como por la variabilidad total, ¿Qué componente tiene más influencia en la variación total?
+
+\textbf{Solución.}
+
+\textbf{Variable Respuesta:} Pesada calculada.
+
+\textbf{Planteamiento de las Hipótesis a probar:}
+
+Con el objetivo de ejemplificar el Análisis de Varianza de este tipo de Modelo, se plantearan
+las tres hipótesis en forma Estadística que se desean probar.
+\begin{enumerate}
+\item $H_0 : \sigma^2_{\uptau} = 0$
+
+      $H_1 : \sigma^2_{\uptau} > 0$
+
+\item $H_0 : \sigma^2_{\beta} = 0$
+
+      $H_1 : \sigma^2_{\beta} > 0$
+
+\item $H_0 : (\sigma^2_{\uptau\beta}) = 0$, para todo ij.
+
+      $H_1 : (\sigma^2_{\uptau\beta}) > 0$
+\end{enumerate}
+
+\textbf{Forma verbal de las Hipótesis}
+
+\begin{enumerate}
+
+\item $H_0$ : La variabilidad entre las balanzas no influyen significativamente en el peso calculado.
+
+$H_1$ : La variabilidad entre las balanzas influyen significativamente en el peso calculado.
+
+\item $H_0$ : La variabilidad entre las habilidadades del personal para efectuar las pesadas es homogenea.
+
+$H_1$ : La variabilidad entre las habilidadades del personal para efectuar las pesadas no es homogenea.
+
+\item $H_0$ : La combinación de la habilidad del personal y las balanzas no influyen significativamente al efectuar las pesadas.
+
+$H_1$ : La combinación de la habilidad del personal y las balanzas influyen significativamente al efectuar las pesadas.
+\end{enumerate}
+
+
+<<>>=
+library(xtable)
+#Ejemplo del libro de Cesar Perez
+#pagina 189, Diseño Bifactorial
+datos2F<-read.csv("BIFACTORIALCP.csv", header = TRUE, sep = ",")
+#cuando los bloques o factores no son cadenas
+#es necesariso generar los niveles con
+#el comando factor()
+fact2CP<- aov(PESO~BALANZAS*PERSONAL , data = datos2F  )
+anovaBi<-summary(fact2CP)
+RES<- xtable(anovaBi)
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrrr}
+  \hline
+ & Df & Sum Sq & Mean Sq & F value & Pr($>$F) \\ 
+  \hline
+  BALANZAS          & 2 & 0.13 & 0.07 & 2.40 & 0.1121 \\ 
+  PERSONAL          & 3 & 0.43 & 0.14 & 5.24 & 0.0063 \\ 
+  BALANZAS:PERSONAL & 6 & 0.15 & 0.03 & 0.93 & 0.4924 \\ 
+  Residuals         & 24 & 0.65 & 0.03 &  &  \\ 
+   \hline
+\end{tabular}
+\caption{Análisis de Varianza}
+\end{table}
+
+\textbf{Conclusión.}
+
+Se concluye que:
+
+La variabilidad entre las balanzas no influyen significativamente en el peso calculado, la variabilidad entre las habilidadades del personal para efectuar las pesadas no es homogenea, la combinación de la habilidad del personal y las balanzas no influyen significativamente al efectuar las pesadas.
+
+
 \section*{Diseño Trifactorial}
 Estos tipos de Diseños experimentales son aquellos en los cuales se involucran en su
 estudio tres factores; es decir, que se esta interesado en los efectos que producen los tres
@@ -217,7 +328,7 @@ que a él le interesan estudiar, entonces los factores son fijos.
 Por lo tanto, de acuerdo a la forma en que son elegidos los niveles de los factores, así es
 el Modelo que resulta y el Análisis de Varianza que se lleva a cabo.
 
-\textbf{Ejemplo 2.}
+\textbf{Ejemplo 3.}
 
 En un experimento para investigar las propiedades de resistencia a la compresión de
 mezclas de Cemento y Tierra, se utilizaron dos períodos (Edad A) diferentes de curado en
@@ -361,6 +472,7 @@ Residuals & 8 & 17113.50 & 2139.19 &  &  \\
 \caption{Análisis de Varianza}
 \end{table}
 
+\newpage
 \textbf{Conclusiones}
 
 Se tiene:

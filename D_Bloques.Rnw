@@ -433,3 +433,81 @@ Para los hornos en H1 aumentara la temperatura si se colocan los componentes en 
 
 El 27.667 para T1 significa que la tempreratura aumentara en 27.667ºF si se colocan los componentes en el Bloque 1 y disminuira -27.667ºF si se coloca en el Bloque 2.
 
+\newpage
+\textbf{Ejemplo 3.}
+Como ejemplo se consideran cuatro máquinas diferentes para el emsamblaje de un producto, las cuatro máquinas son utilizadas por seis operadores diferentes (Variable Bloque) en un diseño de bloques aleatorizados para comprobar el rendimiento de las máquinas, las máquinas se asignan en orden aleatorio a cada operador y se anotan los tiempos para ensamblar el producto obteniéndose los siguientes resultados:
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{||c|c|c|c|c|c|c||}
+\hline
+\hline
+\multirow{2}{*}{Máquina (Factor)}  & \multicolumn{6}{c||}{Operador (Bloque)} \\
+\cline{2-7}
+            &1&2&3&4&5&6 \\
+\hline
+
+  1         & 42.5 & 39.3 & 39.6 & 39.9 & 42.9 & 43.6 \\
+\hline
+  2         & 39.8 & 40.1 & 40.5 & 42.3 & 42.5 & 43.1 \\
+\hline
+  3         & 40.2 & 40.5 & 41.3 & 43.4 & 44.9 & 45.1 \\
+\hline
+  4         & 41.3 & 42.2 & 43.5 & 44.2 & 45.9 & 42.3 \\
+\hline
+\hline
+
+\end{tabular}
+\caption{Temperaturas}
+\end{table}
+
+Se trata de probar la hipótesis de que las máquinas funcionan a la misma tasa de velocidad al nivel $\alpha = 0.05$, es decir comparar si existen diferencias en los operadores en la rapidez con la que operan las maquinas.
+
+\textbf{Solución}
+
+Antes de realizar los cálculos matemáticos, se definirán las hipótesis que se desean probar.
+
+$H_0 : \mu_1 = \mu_2 = \mu_3 = \mu_4 = \mu_5 = \mu_6 $ (No existe diferencia en la velocidad de la máquinas)
+$H_1 : \mu_1 \not= \mu_2 \not= \mu_3 \not= \mu_4 \not= \mu_5 \not= \mu_6$ (Existe diferencia entre la velocidad de la máquinas)
+
+\textbf{Variable Respuesta:} Velocidad de las maquinas.
+
+\textbf{El significado verbal es:}
+
+$H_0$ : Los operadores no influyen en la velocidad de la máquinas.
+$H_1$ : Los operadores influyen en la velocidad de la máquinas.
+
+
+
+
+<<>>=
+library(xtable)
+#Ejemplo del libro de Cesar Perez
+#Diseño Por Bloques, el ejemplo original esta
+#en la pagina 186 y sigue en la 255
+datosB<-read.csv("BLOQUESCP.csv", header = TRUE, sep = ",")
+#cuando los bloques o factores no son cadenas
+#es necesario generar los niveles con
+#el comando factor()
+BLOCCP<- aov(TIEMPO~factor(MAQUINA) + factor(OPERADOR), data = datosB)
+anovaB<-anova(BLOCCP)
+res<-xtable(anovaB)
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrrr}
+  \hline
+ & Df & Sum Sq & Mean Sq & F value & Pr($>$F) \\ 
+  \hline
+  MAQUINA (Factor) & 3 & 15.92 & 5.31 & 3.34 & 0.0479 \\ 
+  OPERADOR (Bloque) & 5 & 42.09 & 8.42 & 5.29 & 0.0053 \\ 
+  Residuals & 15 & 23.85 & 1.59 &  &  \\ 
+   \hline
+\end{tabular}
+\caption{Análisis de Varianza}
+\end{table}
+
+\textbf{Conclusión.}
+
+Puede observarse que existe diferencia entre la velocidad de la máquinas y que los operadores influyen en la velocidad de la máquinas ya que el P.Adj es menor a 0.05 por lo tanto las máquinas no funcionan a la misma tasa media de velocidad.

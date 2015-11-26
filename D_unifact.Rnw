@@ -163,20 +163,6 @@ resistencia a la tensión. En la tabla se muestran los valores de la resistencia
 acero para cada uno de los 4 diferentes porcentajes de carbón. Con estos datos efectúe el
 análisis apropiado e interprete sus resultados.
 
-\textbf{Variable de estudio:} Resistencia a la tensión.
-
-\textbf{Hipótesis:}
-
-$H_{0}$ : $\mu_1 = \mu_2 = \mu_3 = \mu_4$ (No existe diferencia entre los grupos)
-
-$H_{1}$ : $\mu_1 \not= \mu_2 \not= \mu_3 \not= \mu_4$ (Existe diferencia entre los grupos)
-
-\textbf{El significado verbal de las hipótesis es:}
-
-\textbf{$H_{0}$} : La cantidad de carbón usada en la producción de acero no tiene efecto significativo en la resistencia a la tensión
-
-\textbf{$H_{1}$} : La cantidad de carbón usada en la producción de acero tiene efecto significativo en la resistencia a la tensión.
-
 \begin{table}[htb]
 \centering
 \begin{tabular}{||c|c|c|c|c||}
@@ -197,6 +183,22 @@ $H_{1}$ : $\mu_1 \not= \mu_2 \not= \mu_3 \not= \mu_4$ (Existe diferencia entre l
 \end{tabular}
 \caption{Resistencia a la Tensión}
 \end{table}
+
+\textbf{Variable de estudio:} Resistencia a la tensión.
+
+\textbf{Hipótesis:}
+
+$H_{0}$ : $\mu_1 = \mu_2 = \mu_3 = \mu_4$ (No existe diferencia entre los grupos)
+
+$H_{1}$ : $\mu_1 \not= \mu_2 \not= \mu_3 \not= \mu_4$ (Existe diferencia entre los grupos)
+
+\textbf{El significado verbal de las hipótesis es:}
+
+\textbf{$H_{0}$} : La cantidad de carbón usada en la producción de acero no tiene efecto significativo en la resistencia a la tensión
+
+\textbf{$H_{1}$} : La cantidad de carbón usada en la producción de acero tiene efecto significativo en la resistencia a la tensión.
+
+
 
 <<>>=
 FCarbon<-c("0.10%","0.10%","0.10%",
@@ -225,6 +227,7 @@ Nivel       & 3 & 622.25 & 207.42 & 15.41 & 0.0002 \\
 \caption{Anova de un factor}
 \end{table}
 \newpage
+
 \textbf{Conclusión.}
 
 Se concluye que la cantidad de carbón usada en la producción de acero tiene efectos
@@ -330,3 +333,181 @@ Tabla<- xtable(data.Prueba.result)
 \end{table}
 
 Y efectivamente puede observarse que en la columna P.adj la comparación entre los grupos con 40\% y 30\% de carbón no difieren significativamente en media (igual al LSD) sin embargo en los grupos 20\% y 10\% y 30\% y 20\% de carbón  dado que el P.adj es mayor a 0.05 no existe diferencia significativa en las medias de estas comparaciones y si existe diferencia en las demas combinaciones, en definitiva puede decirse que el la prueba de tukey es mas precisa que el la prueba LSD dado que esta reporto un grupo más que no difieren significativamente en media.
+\newpage
+\textbf{Ejemplo 3.}
+
+Una empresa tiene cinco vendedores y proyecta reapartir bonificaciones entre ellos segun su capacidad de venta. Para ello mide su volumen de ventas en cinco instantes distintos de tiempo obteniendo los siguientes resultados:
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{||c|c|c|c|c||}
+\hline
+\hline
+ Vendedor 1  & Vendedor 2 & Vendedor 3 & Vendedor 4 & Vendedor 5\\
+\hline
+9.34 & 6.46 & 5.79 & 8.37 & 4.94 \\
+8.53 & 4.83 & 5.13 & 7.57 & 4.11 \\
+9.43 & 5.89 & 6.17 & 8.69 & 5.45 \\
+8.37 & 5.30 & 4.72 & 8.06 & 5.21  \\
+9.64 & 6.33 & 5.60 & 7.23 & 5.00  \\
+\hline
+\hline
+\end{tabular}
+\caption{Volumen de ventas}
+\end{table}
+
+Contrastar al 95\% si la capacidad de venta difiere de unos vendedores a otros ordenando dichas capacidades en caso de que existan diferencias.
+
+\textbf{Solución.}
+
+\textbf{Variable de estudio:} Capacidad de Venta.
+
+\textbf{Hipótesis:}
+
+$H_{0}$ : $\mu_1 = \mu_2 = \mu_3 = \mu_4 = \mu_5$ (No existe diferencia entre los grupos o niveles)
+
+$H_{1}$ : $\mu_1 \not= \mu_2 \not= \mu_3 \not= \mu_4 \not= \mu_5$ (Existe diferencia entre los grupos)
+
+\textbf{El significado verbal de las hipótesis es:}
+
+\textbf{$H_{0}$} : Los vendedores tienen igual capacidad de venta. 
+
+\textbf{$H_{1}$} : Los vendedores no tienen igual capacidad de venta. 
+
+<<>>=
+library(xtable)
+#Ejemplo del libro de Cesar Perez
+#pagina 130, Dise?o unifactorial
+datos<-read.csv("BonificacionesCP.csv", header = TRUE, sep = ",")
+UnifactCP<- aov(VLV~Vendedor, data = datos)
+anovaU<-anova(UnifactCP)
+Res<- xtable(anovaU)
+#Agregar la prueba tukey y LSD
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrrr}
+  \hline
+ & Df & Sum Sq & Mean Sq & F value & Pr($>$F) \\ 
+  \hline
+Vendedor & 4 & 63.34 & 15.83 & 45.75 & 0.0000 \\ 
+  Residuals & 20 & 6.92 & 0.35 &  &  \\ 
+   \hline
+\end{tabular}
+\caption{Análisis de Varianza}
+\end{table}
+
+\textbf{Conclusión.}
+
+Se concluye que los 5 vendedores no tienen igual capacidad de venta dado que se ha rechazado la hipotesis nula, debido a que el valor de P.adj es menor a 0.05.
+Como se ha rechazado $H_0$, existe diferencia entre las medias de los tratamientos, pero no
+se especifica entre que medias de tratamientos existen las diferencias, para ello se utilizará el método de Tukey y LSD para contestar esta inquietud.
+
+\textbf{Estimacion de las medias de los tratamientos:}
+<<>>=
+library(ggplot2)
+library(gplots)
+boxplot(datos$VLV~datos$Vendedor,
+        ylab = "Volumen de venta",
+        xlab = "Vendedor",
+        col=rainbow(5, alpha = .3))
+plotmeans(datos$VLV~datos$Vendedor,
+          ylab = "Volumen de venta",
+          xlab = "Vendedor")
+@
+
+\textbf{Evaluacion de las diferencias entre los tratamientos:}
+
+Prueba LSD:
+<<>>=
+library(agricolae)
+data.Prueba1<- LSD.test(UnifactCP, "Vendedor"  )
+data.Prueba1.result1<- data.frame(data.Prueba1$statistics)
+data.Prueba1.result2<- data.frame(data.Prueba1$means)
+data.Prueba1.result3<- data.frame(data.Prueba1$groups)
+tabla1 <- xtable(data.Prueba1.result1)
+tabla2 <- xtable(data.Prueba1.result2)
+tabla3 <- xtable(data.Prueba1.result3)
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Mean & CV & MSerror & LSD \\ 
+  \hline
+  & 6.65 & 8.85 & 0.35 & 0.78 \\ 
+   \hline
+\end{tabular}
+\caption{Calculo del LSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrr}
+  \hline
+ & VLV & std & r & LCL & UCL & Min & Max \\ 
+  \hline
+Vendedor1 & 9.06 & 0.57 &   5 & 8.51 & 9.61 & 8.37 & 9.64 \\ 
+  Vendedor2 & 5.76 & 0.69 &   5 & 5.21 & 6.31 & 4.83 & 6.46 \\ 
+  Vendedor3 & 5.48 & 0.57 &   5 & 4.93 & 6.03 & 4.72 & 6.17 \\ 
+  Vendedor4 & 7.98 & 0.59 &   5 & 7.44 & 8.53 & 7.23 & 8.69 \\ 
+  Vendedor5 & 4.94 & 0.51 &   5 & 4.39 & 5.49 & 4.11 & 5.45 \\ 
+   \hline
+\end{tabular}
+\caption{Estadísticos}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrl}
+  \hline
+ & trt & means & M \\ 
+  \hline
+  1 & Vendedor1 & 9.06 & a \\ 
+  2 & Vendedor4 & 7.98 & b \\ 
+  3 & Vendedor2 & 5.76 & c \\ 
+  4 & Vendedor3 & 5.48 & cd \\ 
+  5 & Vendedor5 & 4.94 & d \\ 
+   \hline
+\end{tabular}
+\caption{Comparaciones}
+\end{table}
+\newpage
+\textbf{Conclusión.}
+Pude observarse que el vendedor con mayor capacidad de venta es el vendedor 1, y que las combinaciones (según la tabla de Comparaciones) Vendedor 1 con los vendedores 2,3,4,5 y vendedor 4 con 2,3,5 son significativamente diferentes en capacidad de venta (media) y para las combinaciones de vendedores 2, 3, 5 su capacidad de venta no es significativamente diferente.
+\newpage
+Prueba de Tukey: 
+<<>>=
+data.Prueba<-TukeyHSD(UnifactCP, ordered = TRUE)
+data.Prueba.result<- data.frame(data.Prueba$Vendedor)
+Tabla<- xtable(data.Prueba.result)
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & diff & lwr & upr & p.adj \\ 
+  \hline
+Vendedor3-Vendedor5 & 0.54 & -0.57 & 1.65 & 0.60 \\ 
+  Vendedor2-Vendedor5 & 0.82 & -0.29 & 1.93 & 0.22 \\ 
+  Vendedor4-Vendedor5 & 3.04 & 1.93 & 4.16 & 0.00 \\ 
+  Vendedor1-Vendedor5 & 4.12 & 3.01 & 5.23 & 0.00 \\ 
+  Vendedor2-Vendedor3 & 0.28 & -0.83 & 1.39 & 0.94 \\ 
+  Vendedor4-Vendedor3 & 2.50 & 1.39 & 3.62 & 0.00 \\ 
+  Vendedor1-Vendedor3 & 3.58 & 2.47 & 4.69 & 0.00 \\ 
+  Vendedor4-Vendedor2 & 2.22 & 1.11 & 3.34 & 0.00 \\ 
+  Vendedor1-Vendedor2 & 3.30 & 2.19 & 4.41 & 0.00 \\ 
+  Vendedor1-Vendedor4 & 1.08 & -0.04 & 2.19 & 0.06 \\ 
+   \hline
+\end{tabular}
+\caption{Prueba de Tukey}
+\end{table}
+
+\textbf{Conclución.}
+
+Puede conluirse que el vendedor 1 con los vendedores 2,3,4,5 y vendedor 4 con 2,3,5 son significativamente diferentes en capacidad de venta (media) y para las combinaciones de vendedores 2, 3, 5 su capacidad de venta no es significativamente diferente además esta prueba muestra que el vendedor 1 con el vendedor 4 no poseen diferencia significativa en capacidad de venta.
+
+\textbf{En definitiva el mejor vendedor es el 1 seguido del 4 y 2,3,5.}
